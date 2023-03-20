@@ -183,33 +183,33 @@ type EMoneyApp struct {
 	memKeys map[string]*sdk.MemoryStoreKey
 
 	// keepers
-	accountKeeper    authkeeper.AccountKeeper
-	bankKeeper       *embank.ProxyKeeper
-	historykeeper    historykeeper.HistoryKeeper
-	capabilityKeeper *capabilitykeeper.Keeper
-	distrKeeper      distrkeeper.Keeper
-	stakingKeeper    stakingkeeper.Keeper
-	slashingKeeper   emslashing.Keeper
-	crisisKeeper     crisiskeeper.Keeper
-	upgradeKeeper    upgradekeeper.Keeper
-	paramsKeeper     paramskeeper.Keeper
-	ibcKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
-	evidenceKeeper   evidencekeeper.Keeper
-	transferKeeper   ibctransferkeeper.Keeper
-	feeGrantKeeper   feegrantkeeper.Keeper
-	authzKeeper      authzkeeper.Keeper
+	AccountKeeper    authkeeper.AccountKeeper
+	BankKeeper       *embank.ProxyKeeper
+	Historykeeper    historykeeper.HistoryKeeper
+	CapabilityKeeper *capabilitykeeper.Keeper
+	DistrKeeper      distrkeeper.Keeper
+	StakingKeeper    stakingkeeper.Keeper
+	SlashingKeeper   emslashing.Keeper
+	CrisisKeeper     crisiskeeper.Keeper
+	UpgradeKeeper    upgradekeeper.Keeper
+	ParamsKeeper     paramskeeper.Keeper
+	IbcKeeper        *ibckeeper.Keeper // IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
+	EvidenceKeeper   evidencekeeper.Keeper
+	TransferKeeper   ibctransferkeeper.Keeper
+	FeeGrantKeeper   feegrantkeeper.Keeper
+	AuthzKeeper      authzkeeper.Keeper
 
 	// make scoped keepers public for test purposes
-	scopedIBCKeeper      capabilitykeeper.ScopedKeeper
-	scopedTransferKeeper capabilitykeeper.ScopedKeeper
+	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
+	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 
 	// custom modules
-	inflationKeeper inflation.Keeper
-	lpKeeper        liquidityprovider.Keeper
-	issuerKeeper    issuer.Keeper
-	authorityKeeper authority.Keeper
-	marketKeeper    *market.Keeper
-	buybackKeeper   buyback.Keeper
+	InflationKeeper inflation.Keeper
+	LpKeeper        liquidityprovider.Keeper
+	IssuerKeeper    issuer.Keeper
+	AuthorityKeeper authority.Keeper
+	MarketKeeper    *market.Keeper
+	BuybackKeeper   buyback.Keeper
 
 	// the module manager
 	mm *module.Manager
@@ -269,47 +269,47 @@ func NewApp(
 		database:          createApplicationDatabase(homePath),
 	}
 
-	app.paramsKeeper = initParamsKeeper(appCodec, legacyAmino, keys[paramstypes.StoreKey], tkeys[paramstypes.TStoreKey])
+	app.ParamsKeeper = initParamsKeeper(appCodec, legacyAmino, keys[paramstypes.StoreKey], tkeys[paramstypes.TStoreKey])
 
 	// set the BaseApp's parameter store
-	bApp.SetParamStore(app.paramsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramskeeper.ConsensusParamsKeyTable()))
+	bApp.SetParamStore(app.ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramskeeper.ConsensusParamsKeyTable()))
 
 	// add capability keeper and ScopeToModule for ibc module
-	app.capabilityKeeper = capabilitykeeper.NewKeeper(appCodec, keys[capabilitytypes.StoreKey], memKeys[capabilitytypes.MemStoreKey])
-	scopedIBCKeeper := app.capabilityKeeper.ScopeToModule(ibchost.ModuleName)
-	scopedTransferKeeper := app.capabilityKeeper.ScopeToModule(ibctransfertypes.ModuleName)
+	app.CapabilityKeeper = capabilitykeeper.NewKeeper(appCodec, keys[capabilitytypes.StoreKey], memKeys[capabilitytypes.MemStoreKey])
+	scopedIBCKeeper := app.CapabilityKeeper.ScopeToModule(ibchost.ModuleName)
+	scopedTransferKeeper := app.CapabilityKeeper.ScopeToModule(ibctransfertypes.ModuleName)
 
 	// add keepers
-	app.accountKeeper = authkeeper.NewAccountKeeper(
+	app.AccountKeeper = authkeeper.NewAccountKeeper(
 		appCodec, keys[authtypes.StoreKey], app.GetSubspace(authtypes.ModuleName), authtypes.ProtoBaseAccount, maccPerms,
 	)
 
-	app.bankKeeper = embank.Wrap(bankkeeper.NewBaseKeeper(
-		appCodec, keys[banktypes.StoreKey], app.accountKeeper, app.GetSubspace(banktypes.ModuleName), app.ModuleAccountAddrs(),
+	app.BankKeeper = embank.Wrap(bankkeeper.NewBaseKeeper(
+		appCodec, keys[banktypes.StoreKey], app.AccountKeeper, app.GetSubspace(banktypes.ModuleName), app.ModuleAccountAddrs(),
 	))
 
 	stakingKeeper := stakingkeeper.NewKeeper(
-		appCodec, keys[stakingtypes.StoreKey], app.accountKeeper, app.bankKeeper, app.GetSubspace(stakingtypes.ModuleName),
+		appCodec, keys[stakingtypes.StoreKey], app.AccountKeeper, app.BankKeeper, app.GetSubspace(stakingtypes.ModuleName),
 	)
 
-	app.authzKeeper = authzkeeper.NewKeeper(keys[authzkeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
+	app.AuthzKeeper = authzkeeper.NewKeeper(keys[authzkeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
 
-	app.feeGrantKeeper = feegrantkeeper.NewKeeper(appCodec, keys[feegrant.StoreKey], app.accountKeeper)
+	app.FeeGrantKeeper = feegrantkeeper.NewKeeper(appCodec, keys[feegrant.StoreKey], app.AccountKeeper)
 
-	app.historykeeper = historykeeper.NewHistoryKeeper(appCodec, keys[historykeeper.StoreKey], stakingKeeper, app.database)
+	app.Historykeeper = historykeeper.NewHistoryKeeper(appCodec, keys[historykeeper.StoreKey], stakingKeeper, app.database)
 
-	app.distrKeeper = distrkeeper.NewKeeper(
-		appCodec, keys[distrtypes.StoreKey], app.GetSubspace(distrtypes.ModuleName), app.accountKeeper, app.bankKeeper,
+	app.DistrKeeper = distrkeeper.NewKeeper(
+		appCodec, keys[distrtypes.StoreKey], app.GetSubspace(distrtypes.ModuleName), app.AccountKeeper, app.BankKeeper,
 		&stakingKeeper, authtypes.FeeCollectorName, app.ModuleAccountAddrs(),
 	)
-	app.slashingKeeper = emslashing.NewKeeper(
-		appCodec, keys[emslashing.StoreKey], &stakingKeeper, app.GetSubspace(emslashing.ModuleName), app.bankKeeper,
+	app.SlashingKeeper = emslashing.NewKeeper(
+		appCodec, keys[emslashing.StoreKey], &stakingKeeper, app.GetSubspace(emslashing.ModuleName), app.BankKeeper,
 		app.database, authtypes.FeeCollectorName,
 	)
-	app.crisisKeeper = crisiskeeper.NewKeeper(
-		app.GetSubspace(crisistypes.ModuleName), invCheckPeriod, app.bankKeeper, authtypes.FeeCollectorName,
+	app.CrisisKeeper = crisiskeeper.NewKeeper(
+		app.GetSubspace(crisistypes.ModuleName), invCheckPeriod, app.BankKeeper, authtypes.FeeCollectorName,
 	)
-	app.upgradeKeeper = upgradekeeper.NewKeeper(skipUpgradeHeights, keys[upgradetypes.StoreKey], appCodec, homePath, app.BaseApp)
+	app.UpgradeKeeper = upgradekeeper.NewKeeper(skipUpgradeHeights, keys[upgradetypes.StoreKey], appCodec, homePath, app.BaseApp)
 
 	{
 		/*
@@ -317,7 +317,7 @@ func NewApp(
 		 */
 		const upg44Plan = "v44-upg-test-sample"
 
-		app.upgradeKeeper.SetUpgradeHandler(
+		app.UpgradeKeeper.SetUpgradeHandler(
 			upg44Plan,
 			func(
 				ctx sdk.Context, _ upgradetypes.Plan, _ module.VersionMap,
@@ -325,7 +325,7 @@ func NewApp(
 				// set max expected block time parameter. Replace the default with your expected value
 				// https://github.com/cosmos/ibc-go/blob/release/v1.0.x/docs/ibc/proto-docs.md#params-2
 				// set max block time to 30 seconds
-				app.ibcKeeper.ConnectionKeeper.SetParams(
+				app.IbcKeeper.ConnectionKeeper.SetParams(
 					// should 3-5 minutes in mainnet
 					ctx, ibcconnectiontypes.DefaultParams(),
 				)
@@ -362,12 +362,12 @@ func NewApp(
 				return app.mm.RunMigrations(ctx, app.configurator, newVM)
 			})
 
-		upgradeInfo, err := app.upgradeKeeper.ReadUpgradeInfoFromDisk()
+		upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
 		if err != nil {
 			panic(err)
 		}
 
-		if upgradeInfo.Name == upg44Plan && !app.upgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
+		if upgradeInfo.Name == upg44Plan && !app.UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 			storeUpgrades := store.StoreUpgrades{
 				Added: []string{authz.ModuleName, feegrant.ModuleName},
 			}
@@ -383,40 +383,40 @@ func NewApp(
 
 	// register the staking hooks
 	// NOTE: stakingKeeper above is passed by reference, so that it will contain these hooks
-	app.stakingKeeper = *stakingKeeper.SetHooks(
-		stakingtypes.NewMultiStakingHooks(app.distrKeeper.Hooks(), app.slashingKeeper.Hooks()),
+	app.StakingKeeper = *stakingKeeper.SetHooks(
+		stakingtypes.NewMultiStakingHooks(app.DistrKeeper.Hooks(), app.SlashingKeeper.Hooks()),
 	)
 
-	app.ibcKeeper = ibckeeper.NewKeeper(
+	app.IbcKeeper = ibckeeper.NewKeeper(
 		appCodec, keys[ibchost.StoreKey], app.GetSubspace(ibchost.ModuleName),
-		app.historykeeper, app.upgradeKeeper, scopedIBCKeeper)
+		app.Historykeeper, app.UpgradeKeeper, scopedIBCKeeper)
 
 	// Create Transfer Keepers
-	app.transferKeeper = ibctransferkeeper.NewKeeper(
+	app.TransferKeeper = ibctransferkeeper.NewKeeper(
 		appCodec, keys[ibctransfertypes.StoreKey], app.GetSubspace(ibctransfertypes.ModuleName),
-		app.ibcKeeper.ChannelKeeper, &app.ibcKeeper.PortKeeper,
-		app.accountKeeper, app.bankKeeper, scopedTransferKeeper,
+		app.IbcKeeper.ChannelKeeper, &app.IbcKeeper.PortKeeper,
+		app.AccountKeeper, app.BankKeeper, scopedTransferKeeper,
 	)
-	transferModule := transfer.NewAppModule(app.transferKeeper)
+	transferModule := transfer.NewAppModule(app.TransferKeeper)
 
 	// Create static IBC router, add transfer route, then set and seal it
 	ibcRouter := porttypes.NewRouter()
 	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferModule)
-	app.ibcKeeper.SetRouter(ibcRouter)
+	app.IbcKeeper.SetRouter(ibcRouter)
 
 	// create evidence keeper with router
 	evidenceKeeper := evidencekeeper.NewKeeper(
-		appCodec, keys[evidencetypes.StoreKey], &app.stakingKeeper, app.slashingKeeper,
+		appCodec, keys[evidencetypes.StoreKey], &app.StakingKeeper, app.SlashingKeeper,
 	)
 	// If evidence needs to be handled for the app, set routes in router here and seal
-	app.evidenceKeeper = *evidenceKeeper
+	app.EvidenceKeeper = *evidenceKeeper
 
-	app.inflationKeeper = inflation.NewKeeper(app.appCodec, keys[inflation.StoreKey], app.bankKeeper, app.accountKeeper, app.stakingKeeper, buyback.AccountName, authtypes.FeeCollectorName)
-	app.lpKeeper = liquidityprovider.NewKeeper(app.appCodec, keys[lptypes.StoreKey], app.bankKeeper)
-	app.issuerKeeper = issuer.NewKeeper(app.appCodec, keys[issuer.StoreKey], app.lpKeeper, app.inflationKeeper, app.bankKeeper)
-	app.authorityKeeper = authority.NewKeeper(app.appCodec, keys[authority.StoreKey], app.issuerKeeper, app.bankKeeper, app, &app.upgradeKeeper, app.paramsKeeper)
-	app.marketKeeper = market.NewKeeper(app.appCodec, keys[market.StoreKey], keys[market.StoreKeyIdx], app.accountKeeper, app.bankKeeper)
-	app.buybackKeeper = buyback.NewKeeper(app.appCodec, keys[buyback.StoreKey], app.marketKeeper, app.accountKeeper, app.stakingKeeper, app.bankKeeper)
+	app.InflationKeeper = inflation.NewKeeper(app.appCodec, keys[inflation.StoreKey], app.BankKeeper, app.AccountKeeper, app.StakingKeeper, buyback.AccountName, authtypes.FeeCollectorName)
+	app.LpKeeper = liquidityprovider.NewKeeper(app.appCodec, keys[lptypes.StoreKey], app.BankKeeper)
+	app.IssuerKeeper = issuer.NewKeeper(app.appCodec, keys[issuer.StoreKey], app.LpKeeper, app.InflationKeeper, app.BankKeeper)
+	app.AuthorityKeeper = authority.NewKeeper(app.appCodec, keys[authority.StoreKey], app.IssuerKeeper, app.BankKeeper, app, &app.UpgradeKeeper, app.ParamsKeeper)
+	app.MarketKeeper = market.NewKeeper(app.appCodec, keys[market.StoreKey], keys[market.StoreKeyIdx], app.AccountKeeper, app.BankKeeper)
+	app.BuybackKeeper = buyback.NewKeeper(app.appCodec, keys[buyback.StoreKey], app.MarketKeeper, app.AccountKeeper, app.StakingKeeper, app.BankKeeper)
 
 	// NOTE: we may consider parsing `appOpts` inside module constructors. For the moment
 	// we prefer to be more strict in what arguments the modules expect.
@@ -426,31 +426,31 @@ func NewApp(
 	// must be passed by reference here.
 	app.mm = module.NewManager(
 		genutil.NewAppModule(
-			app.accountKeeper, app.stakingKeeper, app.BaseApp.DeliverTx,
+			app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx,
 			encodingConfig.TxConfig,
 		),
-		auth.NewAppModule(appCodec, app.accountKeeper, authsims.RandomGenesisAccounts),
-		vesting.NewAppModule(app.accountKeeper, app.bankKeeper),
-		bank.NewAppModule(appCodec, app.bankKeeper, app.accountKeeper),
-		capability.NewAppModule(appCodec, *app.capabilityKeeper),
-		feegrantmodule.NewAppModule(appCodec, app.accountKeeper, app.bankKeeper, app.feeGrantKeeper, app.interfaceRegistry),
-		authzmodule.NewAppModule(appCodec, app.authzKeeper, app.accountKeeper, app.bankKeeper, interfaceRegistry),
-		crisis.NewAppModule(&app.crisisKeeper, skipGenesisInvariants),
-		emslashing.NewAppModule(appCodec, app.slashingKeeper, app.accountKeeper, app.bankKeeper, app.stakingKeeper),
-		staking.NewAppModule(appCodec, app.stakingKeeper, app.accountKeeper, app.bankKeeper, app.historykeeper),
-		upgrade.NewAppModule(app.upgradeKeeper),
-		evidence.NewAppModule(app.evidenceKeeper),
-		ibc.NewAppModule(app.ibcKeeper),
-		params.NewAppModule(app.paramsKeeper),
+		auth.NewAppModule(appCodec, app.AccountKeeper, authsims.RandomGenesisAccounts),
+		vesting.NewAppModule(app.AccountKeeper, app.BankKeeper),
+		bank.NewAppModule(appCodec, app.BankKeeper, app.AccountKeeper),
+		capability.NewAppModule(appCodec, *app.CapabilityKeeper),
+		feegrantmodule.NewAppModule(appCodec, app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.interfaceRegistry),
+		authzmodule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, interfaceRegistry),
+		crisis.NewAppModule(&app.CrisisKeeper, skipGenesisInvariants),
+		emslashing.NewAppModule(appCodec, app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
+		staking.NewAppModule(appCodec, app.StakingKeeper, app.AccountKeeper, app.BankKeeper, app.Historykeeper),
+		upgrade.NewAppModule(app.UpgradeKeeper),
+		evidence.NewAppModule(app.EvidenceKeeper),
+		ibc.NewAppModule(app.IbcKeeper),
+		params.NewAppModule(app.ParamsKeeper),
 		transferModule,
-		emdistr.NewAppModule(distr.NewAppModule(appCodec, app.distrKeeper, app.accountKeeper, app.bankKeeper, app.stakingKeeper), app.distrKeeper, app.accountKeeper, app.bankKeeper, app.database),
-		liquidityprovider.NewAppModule(app.lpKeeper),
-		issuer.NewAppModule(app.issuerKeeper),
-		authority.NewAppModule(app.authorityKeeper),
-		market.NewAppModule(app.marketKeeper),
-		buyback.NewAppModule(app.buybackKeeper, app.bankKeeper),
-		inflation.NewAppModule(app.inflationKeeper),
-		queries.NewAppModule(app.accountKeeper, app.bankKeeper, app.slashingKeeper),
+		emdistr.NewAppModule(distr.NewAppModule(appCodec, app.DistrKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper), app.DistrKeeper, app.AccountKeeper, app.BankKeeper, app.database),
+		liquidityprovider.NewAppModule(app.LpKeeper),
+		issuer.NewAppModule(app.IssuerKeeper),
+		authority.NewAppModule(app.AuthorityKeeper),
+		market.NewAppModule(app.MarketKeeper),
+		buyback.NewAppModule(app.BuybackKeeper, app.BankKeeper),
+		inflation.NewAppModule(app.InflationKeeper),
+		queries.NewAppModule(app.AccountKeeper, app.BankKeeper, app.SlashingKeeper),
 	)
 
 	// NOTE: staking module is required if HistoricalEntries param > 0
@@ -528,15 +528,15 @@ func NewApp(
 		upgradetypes.ModuleName, paramstypes.ModuleName, queriestypes.ModuleName, vestingtypes.ModuleName,
 	)
 
-	app.mm.RegisterInvariants(&app.crisisKeeper)
+	app.mm.RegisterInvariants(&app.CrisisKeeper)
 	app.mm.RegisterRoutes(app.Router(), app.QueryRouter(), encodingConfig.Amino)
 
 	app.configurator = module.NewConfigurator(app.appCodec, app.MsgServiceRouter(), app.GRPCQueryRouter())
 	// TODO hack to initialize application
 	// from sdk.bank/module.go: AppModule RegisterServices
 	// 	m := keeper.NewMigrator(am.keeper.(keeper.BaseKeeper))
-	sdkBk := app.bankKeeper.GetBankKeeper()
-	bankMigModule := bank.NewAppModule(appCodec, *sdkBk, app.accountKeeper)
+	sdkBk := app.BankKeeper.GetBankKeeper()
+	bankMigModule := bank.NewAppModule(appCodec, *sdkBk, app.AccountKeeper)
 	proxy := app.mm.Modules[banktypes.ModuleName]
 	app.mm.Modules[banktypes.ModuleName] = bankMigModule
 	app.mm.RegisterServices(app.configurator)
@@ -550,12 +550,12 @@ func NewApp(
 
 	anteHandler, err := ante.NewAnteHandler(
 		ante.EmAnteHandlerOptions{
-			AccountKeeper:    app.accountKeeper,
-			BankKeeper:       app.bankKeeper,
-			FeegrantKeeper:   app.feeGrantKeeper,
+			AccountKeeper:    app.AccountKeeper,
+			BankKeeper:       app.BankKeeper,
+			FeegrantKeeper:   app.FeeGrantKeeper,
 			SignModeHandler:  encodingConfig.TxConfig.SignModeHandler(),
 			SigGasConsumer:   sdkante.DefaultSigVerificationGasConsumer,
-			StakingKeeper:    app.stakingKeeper,
+			StakingKeeper:    app.StakingKeeper,
 			IBCChannelkeeper: channelkeeper.Keeper{},
 		},
 	)
@@ -576,8 +576,8 @@ func NewApp(
 		}
 	}
 
-	app.scopedIBCKeeper = scopedIBCKeeper
-	app.scopedTransferKeeper = scopedTransferKeeper
+	app.ScopedIBCKeeper = scopedIBCKeeper
+	app.ScopedTransferKeeper = scopedTransferKeeper
 
 	return app
 }
@@ -640,7 +640,7 @@ func (app *EMoneyApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) (r
 		panic(err)
 	}
 
-	app.upgradeKeeper.SetModuleVersionMap(ctx, app.mm.GetVersionMap())
+	app.UpgradeKeeper.SetModuleVersionMap(ctx, app.mm.GetVersionMap())
 
 	return app.mm.InitGenesis(ctx, app.appCodec, genesisState)
 }
@@ -692,7 +692,7 @@ func (app *EMoneyApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 //
 // NOTE: This is solely to be used for testing purposes.
 func (app *EMoneyApp) GetSubspace(moduleName string) paramstypes.Subspace {
-	subspace, _ := app.paramsKeeper.GetSubspace(moduleName)
+	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
