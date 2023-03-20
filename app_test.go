@@ -63,7 +63,7 @@ func getEmSimApp(
 	for acc := range maccPerms {
 		require.True(
 			t,
-			app.bankKeeper.BlockedAddr(app.accountKeeper.GetModuleAddress(acc)),
+			app.BankKeeper.BlockedAddr(app.AccountKeeper.GetModuleAddress(acc)),
 			"ensure that blocked addresses are properly set in bank keeper",
 		)
 	}
