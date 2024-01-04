@@ -5,9 +5,9 @@
 package cli
 
 import (
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/e-money/em-ledger/x/authority/types"
 	"github.com/spf13/cobra"
 )
 

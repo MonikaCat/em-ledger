@@ -5,8 +5,8 @@
 package slashing
 
 import (
+	"github.com/MonikaCat/em-ledger/x/slashing/keeper"
 	sdktypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
-	"github.com/e-money/em-ledger/x/slashing/keeper"
 )
 
 const (

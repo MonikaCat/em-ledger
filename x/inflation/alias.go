@@ -10,8 +10,8 @@
 package inflation
 
 import (
-	"github.com/e-money/em-ledger/x/inflation/keeper"
-	"github.com/e-money/em-ledger/x/inflation/types"
+	"github.com/MonikaCat/em-ledger/x/inflation/keeper"
+	"github.com/MonikaCat/em-ledger/x/inflation/types"
 )
 
 const (

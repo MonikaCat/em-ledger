@@ -3,9 +3,9 @@ package buyback
 import (
 	"fmt"
 
+	"github.com/MonikaCat/em-ledger/x/buyback/internal/types"
+	markettypes "github.com/MonikaCat/em-ledger/x/market/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/buyback/internal/types"
-	markettypes "github.com/e-money/em-ledger/x/market/types"
 )
 
 func BeginBlocker(ctx sdk.Context, k Keeper, bk types.BankKeeper) {

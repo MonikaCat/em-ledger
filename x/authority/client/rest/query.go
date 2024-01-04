@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/types/rest"
-	"github.com/e-money/em-ledger/x/authority/types"
 	"github.com/gorilla/mux"
 )
 

@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/e-money/em-ledger/x/slashing/migration"
+	"github.com/MonikaCat/em-ledger/x/slashing/migration"
 
+	"github.com/MonikaCat/em-ledger/x/slashing/keeper"
+	"github.com/MonikaCat/em-ledger/x/slashing/types"
 	sdkslashing "github.com/cosmos/cosmos-sdk/x/slashing"
-	"github.com/e-money/em-ledger/x/slashing/keeper"
-	"github.com/e-money/em-ledger/x/slashing/types"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
 	"github.com/gorilla/mux"

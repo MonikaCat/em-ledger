@@ -23,9 +23,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking/teststaking"
 	"github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	apptypes "github.com/e-money/em-ledger/types"
-	"github.com/e-money/em-ledger/x/staking/keeper"
-	emtypes "github.com/e-money/em-ledger/x/staking/types"
+	apptypes "github.com/MonikaCat/em-ledger/types"
+	"github.com/MonikaCat/em-ledger/x/staking/keeper"
+	emtypes "github.com/MonikaCat/em-ledger/x/staking/types"
 )
 
 func TestHistoricalInfo(t *testing.T) {

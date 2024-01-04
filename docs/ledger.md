@@ -15,7 +15,7 @@ The tool used to generate addresses and transactions on the e-Money network is `
 - Initialize your Ledger Nano device and securely store the seed phrase. Do not share it with anyone!
 - Install the [Ledger Live](https://www.ledger.com/ledger-live/) application to manage the Ledger Nano.
 - Use Ledger Live to install the "Cosmos" application onto your Ledger Nano.
-- Install `emcli` using the [build instructions](https://github.com/e-money/em-ledger#build-instructions).
+- Install `emcli` using the [build instructions](https://github.com/MonikaCat/em-ledger#build-instructions).
 - Verify that emcli is installed correctly with the following command:
 
 ```bash

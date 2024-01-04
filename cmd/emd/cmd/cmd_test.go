@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"testing"
 
-	emoney "github.com/e-money/em-ledger"
+	emoney "github.com/MonikaCat/em-ledger"
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/MonikaCat/em-ledger/cmd/emd/cmd"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
-	"github.com/e-money/em-ledger/cmd/emd/cmd"
 )
 
 func TestInitCmd(t *testing.T) {

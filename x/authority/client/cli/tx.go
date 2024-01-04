@@ -10,6 +10,8 @@ import (
 	"io/ioutil"
 	"strings"
 
+	"github.com/MonikaCat/em-ledger/util"
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -18,8 +20,6 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/params/client/utils"
 	upgtypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	"github.com/e-money/em-ledger/util"
-	"github.com/e-money/em-ledger/x/authority/types"
 	"github.com/spf13/cobra"
 	"github.com/tendermint/tendermint/libs/os"
 )

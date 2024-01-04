@@ -4,9 +4,9 @@ import (
 	"sort"
 	"testing"
 
+	types "github.com/MonikaCat/em-ledger/x/liquidityprovider/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	types "github.com/e-money/em-ledger/x/liquidityprovider/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/libs/rand"

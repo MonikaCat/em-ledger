@@ -7,12 +7,12 @@ package distribution
 import (
 	"time"
 
+	apptypes "github.com/MonikaCat/em-ledger/types"
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	auth "github.com/cosmos/cosmos-sdk/x/auth/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	apptypes "github.com/e-money/em-ledger/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 	db "github.com/tendermint/tm-db"
 )

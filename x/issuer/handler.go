@@ -7,9 +7,9 @@ package issuer
 import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
+	"github.com/MonikaCat/em-ledger/x/issuer/keeper"
+	"github.com/MonikaCat/em-ledger/x/issuer/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/issuer/keeper"
-	"github.com/e-money/em-ledger/x/issuer/types"
 )
 
 func newHandler(k keeper.Keeper) sdk.Handler {

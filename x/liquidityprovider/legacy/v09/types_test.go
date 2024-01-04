@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	apptypes "github.com/e-money/em-ledger/types"
+	apptypes "github.com/MonikaCat/em-ledger/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"

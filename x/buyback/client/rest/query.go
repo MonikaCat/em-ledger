@@ -9,7 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 
-	"github.com/e-money/em-ledger/x/buyback/internal/types"
+	"github.com/MonikaCat/em-ledger/x/buyback/internal/types"
 )
 
 func RegisterQueryRoutes(cliCtx client.Context, r *mux.Router) {

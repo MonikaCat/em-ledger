@@ -5,10 +5,10 @@
 package cli
 
 import (
+	"github.com/MonikaCat/em-ledger/x/liquidityprovider/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/liquidityprovider/types"
 	"github.com/spf13/cobra"
 )
 

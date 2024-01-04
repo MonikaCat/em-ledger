@@ -1,8 +1,8 @@
 package buyback
 
 import (
-	"github.com/e-money/em-ledger/x/buyback/internal/keeper"
-	"github.com/e-money/em-ledger/x/buyback/internal/types"
+	"github.com/MonikaCat/em-ledger/x/buyback/internal/keeper"
+	"github.com/MonikaCat/em-ledger/x/buyback/internal/types"
 )
 
 const (

@@ -3,10 +3,10 @@ package main
 import (
 	"os"
 
+	emoney "github.com/MonikaCat/em-ledger"
+	"github.com/MonikaCat/em-ledger/cmd/emd/cmd"
 	"github.com/cosmos/cosmos-sdk/server"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
-	emoney "github.com/e-money/em-ledger"
-	"github.com/e-money/em-ledger/cmd/emd/cmd"
 )
 
 func main() {

@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/MonikaCat/em-ledger/util"
+	"github.com/MonikaCat/em-ledger/x/inflation/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/util"
-	"github.com/e-money/em-ledger/x/inflation/types"
 )
 
 const (

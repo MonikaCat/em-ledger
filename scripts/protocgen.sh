@@ -34,5 +34,5 @@ buf protoc \
   $(find "$(pwd)/proto" -maxdepth 5 -name '*.proto')
 
 # move proto files to the right places
-cp -r github.com/e-money/em-ledger/* ./
+cp -r github.com/MonikaCat/em-ledger/* ./
 rm -rf github.com

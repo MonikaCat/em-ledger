@@ -16,7 +16,7 @@ cp build/gaiad $GOBIN
 #### Hermes v0.8.0+
 Please download the latest Hermes 0.8.x binary release from the [hermes releases](https://github.com/informalsystems/ibc-rs/releases). As of this writing hermes 0.8.0 was the latest.
 
-Copy the binary `hermes` in github.com/e-money/em-ledger/networks/ibc
+Copy the binary `hermes` in github.com/MonikaCat/em-ledger/networks/ibc
 There is a dependency with the `gm` script in the same folder requiring the Hermes binary to be in the same folder.
 
 There is a `.gitignore` for the `hermes` binary.

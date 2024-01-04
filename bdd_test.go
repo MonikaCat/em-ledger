@@ -18,9 +18,9 @@ import (
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 
-	nt "github.com/e-money/em-ledger/networktest"
-	apptypes "github.com/e-money/em-ledger/types"
-	"github.com/e-money/em-ledger/x/inflation"
+	nt "github.com/MonikaCat/em-ledger/networktest"
+	apptypes "github.com/MonikaCat/em-ledger/types"
+	"github.com/MonikaCat/em-ledger/x/inflation"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"

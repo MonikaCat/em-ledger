@@ -8,9 +8,9 @@ import (
 
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/e-money/em-ledger/x/authority/types"
 )
 
 var _ types.MsgServer = msgServer{}

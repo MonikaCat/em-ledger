@@ -9,7 +9,7 @@ The e-Money Ledger, a proof-of-stake blockchain based on the [Cosmos SDK](https:
 This will get you a fully synced node, very quickly.
 
 ```bash
-git clone https://github.com/e-money/em-ledger.git
+git clone https://github.com/MonikaCat/em-ledger.git
 cd em-ledger
 git checkout v1.1.4
 make install

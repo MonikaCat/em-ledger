@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/e-money/em-ledger/x/authority"
-	"github.com/e-money/em-ledger/x/buyback"
-	"github.com/e-money/em-ledger/x/inflation"
+	"github.com/MonikaCat/em-ledger/x/authority"
+	"github.com/MonikaCat/em-ledger/x/buyback"
+	"github.com/MonikaCat/em-ledger/x/inflation"
 
 	"github.com/spf13/cobra"
 	tmconfig "github.com/tendermint/tendermint/config"

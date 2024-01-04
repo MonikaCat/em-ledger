@@ -5,9 +5,9 @@
 package issuer
 
 import (
-	authtypes "github.com/e-money/em-ledger/x/authority/types"
-	"github.com/e-money/em-ledger/x/issuer/keeper"
-	types "github.com/e-money/em-ledger/x/issuer/types"
+	authtypes "github.com/MonikaCat/em-ledger/x/authority/types"
+	"github.com/MonikaCat/em-ledger/x/issuer/keeper"
+	types "github.com/MonikaCat/em-ledger/x/issuer/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

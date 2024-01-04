@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/MonikaCat/em-ledger/x/liquidityprovider/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/liquidityprovider/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	abcitypes "github.com/tendermint/tendermint/abci/types"

@@ -7,8 +7,8 @@ package keeper
 import (
 	"time"
 
+	"github.com/MonikaCat/em-ledger/x/slashing/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/slashing/types"
 )
 
 // SignedBlocksWindowDuration - sliding window for downtime slashing

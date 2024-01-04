@@ -5,9 +5,9 @@ import (
 
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/authority/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

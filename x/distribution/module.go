@@ -3,6 +3,7 @@ package distribution
 import (
 	"encoding/json"
 
+	"github.com/MonikaCat/em-ledger/util"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -10,7 +11,6 @@ import (
 	distr "github.com/cosmos/cosmos-sdk/x/distribution"
 	"github.com/cosmos/cosmos-sdk/x/distribution/client/cli"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/e-money/em-ledger/util"
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 	db "github.com/tendermint/tm-db"

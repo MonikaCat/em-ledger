@@ -16,11 +16,11 @@ import (
 
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
+	"github.com/MonikaCat/em-ledger/x/authority/types"
+	"github.com/MonikaCat/em-ledger/x/issuer"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/params/types/proposal"
-	"github.com/e-money/em-ledger/x/authority/types"
-	"github.com/e-money/em-ledger/x/issuer"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

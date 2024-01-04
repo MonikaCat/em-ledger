@@ -3,11 +3,11 @@ package cli
 import (
 	"time"
 
+	"github.com/MonikaCat/em-ledger/x/buyback"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/x/genutil/types"
 	slashing "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/e-money/em-ledger/x/buyback"
 )
 
 // upgradeModuleParams modifies parameters between emoney-2 and emoney-3.

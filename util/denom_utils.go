@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/e-money/em-ledger/x/authority/types"
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

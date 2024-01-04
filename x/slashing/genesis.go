@@ -1,9 +1,9 @@
 package slashing
 
 import (
+	"github.com/MonikaCat/em-ledger/x/slashing/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/slashing/types"
-	"github.com/e-money/em-ledger/x/slashing/keeper"
 )
 
 // ExportGenesis writes the current store values

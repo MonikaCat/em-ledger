@@ -5,9 +5,9 @@
 package market
 
 import (
-	"github.com/e-money/em-ledger/x/market/client/cli"
-	"github.com/e-money/em-ledger/x/market/keeper"
-	"github.com/e-money/em-ledger/x/market/types"
+	"github.com/MonikaCat/em-ledger/x/market/client/cli"
+	"github.com/MonikaCat/em-ledger/x/market/keeper"
+	"github.com/MonikaCat/em-ledger/x/market/types"
 )
 
 const (

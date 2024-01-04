@@ -12,9 +12,9 @@ import (
 	sdkslashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
+	"github.com/MonikaCat/em-ledger/x/slashing/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/e-money/em-ledger/x/slashing/types"
 	"github.com/stretchr/testify/require"
 )
 

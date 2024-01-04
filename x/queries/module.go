@@ -4,15 +4,15 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/MonikaCat/em-ledger/x/queries/client/cli"
+	"github.com/MonikaCat/em-ledger/x/queries/client/rest"
 	"github.com/cosmos/cosmos-sdk/client"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
-	"github.com/e-money/em-ledger/x/queries/client/cli"
-	"github.com/e-money/em-ledger/x/queries/client/rest"
 	"github.com/gorilla/mux"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
 
-	"github.com/e-money/em-ledger/x/queries/types"
+	"github.com/MonikaCat/em-ledger/x/queries/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"

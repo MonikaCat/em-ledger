@@ -8,8 +8,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking/types"
 	dbm "github.com/tendermint/tm-db"
 
-	apptypes "github.com/e-money/em-ledger/types"
-	staking "github.com/e-money/em-ledger/x/staking/types"
+	apptypes "github.com/MonikaCat/em-ledger/types"
+	staking "github.com/MonikaCat/em-ledger/x/staking/types"
 )
 
 // Forked from Cosmos SDK x/staking/keeper/historical_info.go v0.42.9

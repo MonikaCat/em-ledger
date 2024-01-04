@@ -17,7 +17,7 @@ The list of supported tokens and their respective exchange rates are available a
 
 ```json
 {
-  "_comment": "See https://github.com/e-money/em-ledger/blob/master/docs/tokens.md",
+  "_comment": "See https://github.com/MonikaCat/em-ledger/blob/master/docs/tokens.md",
   "tokens": [
     {
       "token": "EEUR",

@@ -3,8 +3,8 @@ package keeper
 import (
 	"context"
 
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/e-money/em-ledger/x/authority/types"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

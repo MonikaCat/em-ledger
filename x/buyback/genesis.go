@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/e-money/em-ledger/x/buyback/internal/types"
+	"github.com/MonikaCat/em-ledger/x/buyback/internal/types"
 )
 
 func NewGenesisState(interval time.Duration) *types.GenesisState {

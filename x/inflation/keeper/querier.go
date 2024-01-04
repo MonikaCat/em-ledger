@@ -5,10 +5,10 @@
 package keeper
 
 import (
+	"github.com/MonikaCat/em-ledger/x/inflation/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/e-money/em-ledger/x/inflation/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

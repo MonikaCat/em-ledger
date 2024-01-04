@@ -3,7 +3,7 @@
 # Copying the upgrade and present/soon to be legacy binary in the cosmovisor genesis folder
 # Note the cosmovisor folder structure before the upgrade
 # em-ledger/networks/upg/.emd/cosmovisor
-# ├── current -> /Users/user/go/src/github.com/e-money/em-ledger/networks/upg/.emd/cosmovisor/genesis/bin/emd
+# ├── current -> /Users/user/go/src/github.com/MonikaCat/em-ledger/networks/upg/.emd/cosmovisor/genesis/bin/emd
 # ├── genesis
 # │ └── bin
 # │     └── emd

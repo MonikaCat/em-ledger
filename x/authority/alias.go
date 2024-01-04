@@ -5,9 +5,9 @@
 package authority
 
 import (
-	"github.com/e-money/em-ledger/x/authority/client/cli"
-	"github.com/e-money/em-ledger/x/authority/keeper"
-	"github.com/e-money/em-ledger/x/authority/types"
+	"github.com/MonikaCat/em-ledger/x/authority/client/cli"
+	"github.com/MonikaCat/em-ledger/x/authority/keeper"
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 )
 
 const (

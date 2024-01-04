@@ -8,6 +8,7 @@ import (
 	"math"
 	"testing"
 
+	"github.com/MonikaCat/em-ledger/x/liquidityprovider/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
@@ -26,7 +27,6 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	paramskeeper "github.com/cosmos/cosmos-sdk/x/params/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/e-money/em-ledger/x/liquidityprovider/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/libs/log"

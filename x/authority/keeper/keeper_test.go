@@ -15,6 +15,10 @@ import (
 
 	upgradekeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 
+	apptypes "github.com/MonikaCat/em-ledger/types"
+	"github.com/MonikaCat/em-ledger/x/authority/types"
+	"github.com/MonikaCat/em-ledger/x/issuer"
+	"github.com/MonikaCat/em-ledger/x/liquidityprovider"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
@@ -28,10 +32,6 @@ import (
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	paramskeeper "github.com/cosmos/cosmos-sdk/x/params/keeper"
-	apptypes "github.com/e-money/em-ledger/types"
-	"github.com/e-money/em-ledger/x/authority/types"
-	"github.com/e-money/em-ledger/x/issuer"
-	"github.com/e-money/em-ledger/x/liquidityprovider"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
 	"github.com/stretchr/testify/require"

@@ -1,9 +1,9 @@
 package migration
 
 import (
+	"github.com/MonikaCat/em-ledger/x/slashing/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	v043 "github.com/cosmos/cosmos-sdk/x/slashing/legacy/v043"
-	"github.com/e-money/em-ledger/x/slashing/keeper"
 )
 
 // Migrator is a struct for handling in-place store migrations.

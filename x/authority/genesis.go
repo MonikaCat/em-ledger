@@ -5,9 +5,9 @@
 package authority
 
 import (
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/e-money/em-ledger/x/authority/types"
 )
 
 func NewGenesisState(authorityKey sdk.AccAddress, gasPrices sdk.DecCoins) types.GenesisState {

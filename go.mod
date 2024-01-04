@@ -1,4 +1,4 @@
-module github.com/e-money/em-ledger
+module github.com/MonikaCat/em-ledger
 
 go 1.18
 

@@ -3,6 +3,12 @@ package v040
 import (
 	"time"
 
+	"github.com/MonikaCat/em-ledger/x/authority"
+	v09authority "github.com/MonikaCat/em-ledger/x/authority/legacy/v09"
+	"github.com/MonikaCat/em-ledger/x/buyback"
+	v09liquidityprovider "github.com/MonikaCat/em-ledger/x/liquidityprovider/legacy/v09"
+	v09slashing "github.com/MonikaCat/em-ledger/x/slashing/legacy/v09"
+	"github.com/MonikaCat/em-ledger/x/upgrade"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -30,12 +36,6 @@ import (
 	v038upgrade "github.com/cosmos/cosmos-sdk/x/upgrade/legacy/v038"
 	"github.com/cosmos/ibc-go/v2/modules/apps/transfer"
 	ibccore "github.com/cosmos/ibc-go/v2/modules/core"
-	"github.com/e-money/em-ledger/x/authority"
-	v09authority "github.com/e-money/em-ledger/x/authority/legacy/v09"
-	"github.com/e-money/em-ledger/x/buyback"
-	v09liquidityprovider "github.com/e-money/em-ledger/x/liquidityprovider/legacy/v09"
-	v09slashing "github.com/e-money/em-ledger/x/slashing/legacy/v09"
-	"github.com/e-money/em-ledger/x/upgrade"
 )
 
 func migrateGenutil(oldGenState v039genutil.GenesisState) *types.GenesisState {

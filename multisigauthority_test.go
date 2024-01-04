@@ -11,8 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 
+	nt "github.com/MonikaCat/em-ledger/networktest"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	nt "github.com/e-money/em-ledger/networktest"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/tidwall/gjson"

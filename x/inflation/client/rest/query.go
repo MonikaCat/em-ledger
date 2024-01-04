@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/MonikaCat/em-ledger/x/inflation/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/types/rest"
-	"github.com/e-money/em-ledger/x/inflation/types"
 )
 
 func queryInflationHandlerFn(cliCtx client.Context) http.HandlerFunc {

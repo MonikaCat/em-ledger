@@ -9,7 +9,7 @@ package emoney_test
 import (
 	"fmt"
 
-	"github.com/e-money/em-ledger/networktest"
+	"github.com/MonikaCat/em-ledger/networktest"
 	. "github.com/onsi/ginkgo"
 )
 

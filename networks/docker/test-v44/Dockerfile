@@ -5,7 +5,7 @@ ARG branch
 
 # checkout and build linux binary
 WORKDIR /go/src
-RUN     git clone --depth 1 --single-branch --branch $branch https://github.com/e-money/em-ledger.git
+RUN     git clone --depth 1 --single-branch --branch $branch https://github.com/MonikaCat/em-ledger.git
 WORKDIR em-ledger
 # RUN     sed -i '16 i\    ibcconnectiontypes "github.com/cosmos/ibc-go/modules/core/03-connection/types"' app.go
 # RUN     sed -i '16 i\    store "github.com/cosmos/cosmos-sdk/store/types"' app.go

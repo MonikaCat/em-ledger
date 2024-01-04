@@ -3,11 +3,11 @@ package ante
 import (
 	"fmt"
 
+	"github.com/MonikaCat/em-ledger/x/buyback"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	sdkante "github.com/cosmos/cosmos-sdk/x/auth/ante"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
-	"github.com/e-money/em-ledger/x/buyback"
 )
 
 // DeductFeeDecorator deducts fees from the first signer of the tx
@@ -17,7 +17,7 @@ import (
 // If the fee is paid in NGM, it is sent to the tradition fee pool and distributed as rewards
 // If the fee is paid with a stablecoin balance, it is sent to the buyback module
 // CONTRACT: Tx must implement FeeTx interface to use DeductFeeDecorator
-// https://github.com/e-money/em-ledger/issues/41
+// https://github.com/MonikaCat/em-ledger/issues/41
 // From SDK v0.44.2 https://github.com/cosmos/cosmos-sdk/blob/v0.44.2/x/auth/ante/fee.go
 type DeductFeeDecorator struct {
 	ak             sdkante.AccountKeeper

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"sort"
 
-	authtypes "github.com/e-money/em-ledger/x/authority/types"
+	authtypes "github.com/MonikaCat/em-ledger/x/authority/types"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
@@ -16,8 +16,8 @@ import (
 
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/e-money/em-ledger/x/issuer/types"
-	lp "github.com/e-money/em-ledger/x/liquidityprovider"
+	"github.com/MonikaCat/em-ledger/x/issuer/types"
+	lp "github.com/MonikaCat/em-ledger/x/liquidityprovider"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"

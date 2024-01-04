@@ -7,7 +7,7 @@
 package emoney_test
 
 import (
-	nt "github.com/e-money/em-ledger/networktest"
+	nt "github.com/MonikaCat/em-ledger/networktest"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"github.com/tidwall/gjson"

@@ -12,8 +12,8 @@ import (
 
 	"github.com/tidwall/sjson"
 
+	nt "github.com/MonikaCat/em-ledger/networktest"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	nt "github.com/e-money/em-ledger/networktest"
 	tmrand "github.com/tendermint/tendermint/libs/rand"
 	"github.com/tidwall/gjson"
 

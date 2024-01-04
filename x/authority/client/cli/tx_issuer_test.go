@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/MonikaCat/em-ledger/x/authority/client/cli"
+	"github.com/MonikaCat/em-ledger/x/authority/types"
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/testutil"
-	"github.com/e-money/em-ledger/x/authority/client/cli"
-	"github.com/e-money/em-ledger/x/authority/types"
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"

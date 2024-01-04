@@ -27,9 +27,9 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v2/modules/core/keeper"
 	ibctesting "github.com/cosmos/ibc-go/v2/testing"
 
-	apptypes "github.com/e-money/em-ledger/types"
-	"github.com/e-money/em-ledger/x/authority"
-	authtypes "github.com/e-money/em-ledger/x/authority/types"
+	apptypes "github.com/MonikaCat/em-ledger/types"
+	"github.com/MonikaCat/em-ledger/x/authority"
+	authtypes "github.com/MonikaCat/em-ledger/x/authority/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"

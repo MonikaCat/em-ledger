@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/MonikaCat/em-ledger/x/slashing/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	evidencetypes "github.com/cosmos/cosmos-sdk/x/evidence/types"
 	sdkslashingkeeper "github.com/cosmos/cosmos-sdk/x/slashing/keeper"
 	sdkslashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
-	"github.com/e-money/em-ledger/x/slashing/types"
 	db "github.com/tendermint/tm-db"
 )
 

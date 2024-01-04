@@ -2,7 +2,7 @@
 
 DOCKER := $(shell which docker)
 DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace bufbuild/buf
-HTTPS_GIT := https://github.com/e-money/em-ledger.git
+HTTPS_GIT := https://github.com/MonikaCat/em-ledger.git
 PROJECT_NAME = $(shell git remote get-url origin | xargs basename -s .git)
 
 export GO111MODULE=on
@@ -72,7 +72,7 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=e-money \
 		  -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TM_VERSION)
 
 ifeq ($(FAST_CONSENSUS),true)
-	ldflags += -X github.com/e-money/em-ledger/cmd/emd/cmd.CreateEmptyBlocksInterval=2s
+	ldflags += -X github.com/MonikaCat/em-ledger/cmd/emd/cmd.CreateEmptyBlocksInterval=2s
 endif
 
 ifeq (cleveldb,$(findstring cleveldb,$(EM_BUILD_OPTIONS)))
